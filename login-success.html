@@ -1,13 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Login Success</title>
-  </head>
-  <body>
-    <p>Redirecting back to the app...</p>
-    <script>
-      // Parse the authorization code from URL const params = new URLSearchParams(window.location.search); const code = params.get('code'); const state = params.get('state'); if (code) { // Trigger the deep link to your Tauri app const deepLink = macphee-ford-rental-tracker://auth-callback?code=${code}${state ? &state=${state} : ''}; window.location.href = deepLink; } else { console.error('No code found in query params.'); }
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>Login Success</title>
+</head>
+<body>
+  <p>Redirecting back to the app...</p>
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    const state = params.get('state');
+
+    if (code) {
+      const deepLink = `macphee-ford-rental-tracker://auth-callback?code=${code}${state ? `&state=${state}` : ''}`;
+      window.location.href = deepLink;
+    } else {
+      console.error('No code found in query params.');
+    }
+  </script>
+</body>
 </html>
