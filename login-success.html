@@ -1,30 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Login Success</title>
-</head>
-<body>
-  <p>Redirecting back to the app...</p>
-
-  <script>
-    // Parse tokens from URL fragment (implicit flow)
-    const hash = window.location.hash.substring(1); // remove leading '#'
-    const params = Object.fromEntries(new URLSearchParams(hash));
-
-    const access_token = params.access_token;
-    const refresh_token = params.refresh_token;
-    const expires_in = params.expires_in;
-    const expires_at = params.expires_at;
-    const token_type = params.token_type;
-
-    if (access_token && refresh_token) {
-      // Trigger the deep link to your Tauri app with session info
-      const deepLink = `macphee-ford-rental-tracker://auth-callback?access_token=${access_token}&refresh_token=${refresh_token}${expires_in ? `&expires_in=${expires_in}` : ''}${expires_at ? `&expires_at=${expires_at}` : ''}${token_type ? `&token_type=${token_type}` : ''}`;
-      window.location.href = deepLink;
-    } else {
-      console.error('No access token or refresh token found in URL fragment.');
-    }
-  </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login Success</title>
+  </head>
+  <body>
+    <p>Redirecting back to the app...</p>
+    <script>
+      // Parse the authorization code from URL const params = new URLSearchParams(window.location.search); const code = params.get('code'); const state = params.get('state'); if (code) { // Trigger the deep link to your Tauri app const deepLink = macphee-ford-rental-tracker://auth-callback?code=${code}${state ? &state=${state} : ''}; window.location.href = deepLink; } else { console.error('No code found in query params.'); }
+    </script>
+  </body>
 </html>
