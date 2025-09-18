@@ -10,10 +10,15 @@
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     const state = params.get('state');
-
+  
     if (code) {
       const deepLink = `macphee-ford-rental-tracker://auth-callback?code=${code}${state ? `&state=${state}` : ''}`;
       window.location.href = deepLink;
+  
+      // Try to close after a short delay
+      setTimeout(() => {
+        window.close();
+      }, 1000);
     } else {
       console.error('No code found in query params.');
     }
