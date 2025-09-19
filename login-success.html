@@ -3,9 +3,45 @@
 <head>
   <meta charset="UTF-8" />
   <title>Login Success</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #f0f0f0, #d9d9d9);
+      font-family: "Segoe UI", Roboto, sans-serif;
+      color: #333;
+      text-align: center;
+    }
+
+    img {
+      width: 100px;
+      height: 100px;
+      margin-bottom: 20px;
+      border-radius: 20%;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    p {
+      font-size: 1.4rem;
+      font-weight: 500;
+      opacity: 0.85;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
 </head>
 <body>
+  <img src="../assets/icon.png" alt="App Icon" />
   <p>Redirecting back to the app...</p>
+
   <script>
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
